@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Editar Cadastro de Pessoa</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Editar Cadastro</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${pessoa}"
+			method="post">
+
+			
+			<table border="10" cellpadding="10">
+				<tr>				
+					<td>ID:</td>
+					<td>
+						<input type="text" th:field="*{id}" readonly="readonly" />
+					</td>
+				</tr>			
+				<tr>				
+					<td>Nome:</td>
+					<td>
+						<input type="text" th:field="*{nome}" />
+					</td>
+				</tr>
+				<tr>
+					<td>Nascimento:</td>
+					<td><input type="date" th:field="*{nasc}" /></td>
+				</tr>
+				<tr>
+					<td>CPF:</td>
+					<td><input type="number" th:field="*{cpf}" /></td>
+				</tr>
+				<tr>
+					<td>Sexo:</td>
+					<td><input type="text" th:field="*{sexo}" /></td>
+				</tr>	
+				<tr>
+					<td>Altura:</td>
+					<td><input type="text" th:field="*{altura}" /></td>
+				</tr>
+				<tr>
+					<td>Peso:</td>
+					<td><input type="text" th:field="*{peso}" /></td>
+				</tr>							
+				<tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

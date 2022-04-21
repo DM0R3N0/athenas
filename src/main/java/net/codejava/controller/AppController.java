@@ -15,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import net.codejava.model.Pessoas;
 import net.codejava.service.PessoaService;
 
+//A camada Controller (controlador) lida com as requisições dos usuários. 
+//É responsável por retornar uma resposta com a ajuda das camadas Model e View.
+
 @Controller
 public class AppController {
 
@@ -23,7 +26,7 @@ public class AppController {
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		List<Pessoas> listPessoas = service.listAll();
+		List<Pessoas> listPessoas = service.pesquisar();
 		model.addAttribute("listPessoas", listPessoas);
 		
 		return "index";
@@ -39,7 +42,7 @@ public class AppController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String savePessoa(@ModelAttribute("pessoa") Pessoas pessoas) {
-		service.save(pessoas);
+		service.incluir(pessoas);
 		
 		return "redirect:/";
 	}
@@ -47,7 +50,7 @@ public class AppController {
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
 		ModelAndView mav = new ModelAndView("edit_pessoa");
-		Pessoas pessoas = service.get(id);
+		Pessoas pessoas = service.obter(id);
 		mav.addObject("pessoa", pessoas);
 		
 		return mav;
@@ -55,7 +58,7 @@ public class AppController {
 	
 	@RequestMapping("/delete/{id}")
 	public String deletePessoa(@PathVariable(name = "id") int id) {
-		service.delete(id);
+		service.deletar(id);
 		return "redirect:/";		
 	}
 	

@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import net.codejava.model.Pessoas;
 import net.codejava.repository.PessoaRepository;
 
+//Camada responsavel por implementar os metodos da aplicação
+
 @Service
 @Transactional
 public class PessoaService {
@@ -16,19 +18,19 @@ public class PessoaService {
 	@Autowired
 	private PessoaRepository repo;
 	
-	public List<Pessoas> listAll() {
+	public List<Pessoas> pesquisar() {
 		return repo.findAll();
 	}
 	
-	public void save(Pessoas pessoas) {
+	public void incluir(Pessoas pessoas) {
 		repo.save(pessoas);
 	}
 	
-	public Pessoas get(long id) {
+	public Pessoas obter(long id) {
 		return repo.findById(id).get();
 	}
 	
-	public void delete(long id) {
+	public void deletar(long id) {
 		repo.deleteById(id);
 	}
 	
